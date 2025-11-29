@@ -37,6 +37,12 @@ Individual check commands:
 - `npm run fix:eslint` - Auto-fix ESLint issues
 - `npm run fix:prettier` - Auto-format code with Prettier
 
+Test commands:
+- `npm run test` - Run all tests in headless mode
+- `npm run test:ui` - Run tests with interactive UI
+- `npm run test:headed` - Run tests with visible browser
+- `npm run test:debug` - Run tests in debug mode with inspector
+
 ## Architecture
 
 ### Configuration System
@@ -131,6 +137,52 @@ Example: `import { getPermalink } from '~/utils/permalinks'`
 - Custom styles in `src/assets/styles/tailwind.css`
 - Component-specific styles in `src/components/CustomStyles.astro`
 - Dark mode support via theme toggle (system/light/dark)
+
+## Testing
+
+This project uses **Playwright** for end-to-end (E2E) testing with Chrome DevTools support.
+
+### Test Setup
+
+**Configuration**: `playwright.config.ts` configures:
+- Test directory: `tests/e2e/`
+- Base URL: `http://localhost:4321` (dev server)
+- Multiple browser targets: Chromium, Firefox, WebKit
+- Auto-launch dev server before tests
+- HTML reporter for test results
+
+**Test Structure**:
+- E2E tests in `tests/e2e/*.spec.ts`
+- Shared fixtures in `tests/e2e/fixtures.ts`
+- Tests run against running dev server
+
+### Running Tests
+
+Common test commands:
+- `npm run test` - Run all tests (headless, CI-friendly)
+- `npm run test:ui` - Interactive UI mode (best for development)
+- `npm run test:headed` - Run tests with visible browser windows
+- `npm run test:debug` - Debug mode with inspector
+
+### Writing Tests
+
+Tests should follow the TDD workflow pattern:
+1. Define test scenarios describing desired behavior
+2. Write assertions that verify outcomes
+3. Use page locators for reliable element selection
+4. Test user interactions and page navigation
+
+Example test structure:
+```typescript
+import { test, expect } from './fixtures';
+
+test.describe('Feature Name', () => {
+  test('should display correctly', async ({ page }) => {
+    await page.goto('/page-path');
+    await expect(page.locator('selector')).toBeVisible();
+  });
+});
+```
 
 ## Test-Driven Development Workflow
 
