@@ -8,19 +8,19 @@ test.describe('Homepage', () => {
 
   test('should have visible header', async ({ page }) => {
     await page.goto('/');
-    const header = page.locator('header');
+    const header = page.locator('#header');
     await expect(header).toBeVisible();
   });
 
   test('should have navigation menu', async ({ page }) => {
     await page.goto('/');
-    const nav = page.locator('nav');
+    const nav = page.locator('header nav');
     await expect(nav).toBeVisible();
   });
 
   test('should have footer', async ({ page }) => {
     await page.goto('/');
-    const footer = page.locator('footer');
+    const footer = page.locator('footer').first();
     await expect(footer).toBeVisible();
   });
 

@@ -31,6 +31,7 @@ npm run fix
 ```
 
 Individual check commands:
+
 - `npm run check:astro` - Check Astro syntax and types
 - `npm run check:eslint` - Run ESLint
 - `npm run check:prettier` - Check code formatting
@@ -38,6 +39,7 @@ Individual check commands:
 - `npm run fix:prettier` - Auto-format code with Prettier
 
 Test commands:
+
 - `npm run test` - Run all tests in headless mode
 - `npm run test:ui` - Run tests with interactive UI
 - `npm run test:headed` - Run tests with visible browser
@@ -48,12 +50,14 @@ Test commands:
 ### Configuration System
 
 **Central configuration**: `src/config.yaml` controls site-wide settings including:
+
 - Site metadata (name, URL, SEO)
 - Blog behavior (pagination, permalinks, categories/tags)
 - Analytics integration
 - UI theme settings
 
 **Custom Astro Integration**: The `vendor/integration` directory contains a custom Astro integration that:
+
 - Loads `src/config.yaml` at build time
 - Exposes configuration via virtual module `astrowind:config`
 - Automatically updates `robots.txt` with sitemap URL after build
@@ -74,6 +78,7 @@ Import config anywhere using: `import { SITE, APP_BLOG, METADATA } from 'astrowi
 ### Layout System
 
 Three main layouts in `src/layouts/`:
+
 - `Layout.astro` - Base layout with HTML structure, metadata, scripts
 - `PageLayout.astro` - Standard page wrapper with Header/Footer
 - `LandingLayout.astro` - Landing page variant
@@ -84,24 +89,28 @@ Three main layouts in `src/layouts/`:
 **Content Collection**: Blog posts live in `src/data/post/` as `.md` or `.mdx` files.
 
 **Content Schema**: Defined in `src/content/config.ts` using Astro's content collections with Zod validation. Posts include:
+
 - Metadata (title, excerpt, publishDate, updateDate, draft)
 - Taxonomy (category, tags)
 - SEO overrides (metadata object)
 - Automatically calculated reading time (via remark plugin)
 
 **Blog Utilities** (`src/utils/blog.ts`):
+
 - `fetchPosts()` - Loads and caches all published posts
 - `findLatestPosts()` - Get most recent posts
 - `getRelatedPosts()` - Score-based related posts by category/tags
 - `getStaticPaths*()` - Functions for generating static routes for blog list, posts, categories, and tags
 
 **Permalink System** (`src/utils/permalinks.ts`):
+
 - Configurable URL patterns via `POST_PERMALINK_PATTERN` in config.yaml
 - Supports variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
 - `cleanSlug()` uses limax for URL-safe slugs
 - Helper functions: `getPermalink()`, `getBlogPermalink()`, `getCanonical()`
 
 **Dynamic Routes**: Blog uses Astro's dynamic routing in `src/pages/[...blog]/`:
+
 - `[...page].astro` - Paginated post listing
 - `[category]/[...page].astro` - Category archives
 - `[tag]/[...page].astro` - Tag archives
@@ -110,6 +119,7 @@ Three main layouts in `src/layouts/`:
 ### Markdown Processing
 
 Custom remark/rehype plugins in `src/utils/frontmatter.ts`:
+
 - `readingTimeRemarkPlugin` - Calculates reading time and adds to frontmatter
 - `responsiveTablesRehypePlugin` - Wraps tables in scrollable divs
 - `lazyImagesRehypePlugin` - Adds lazy loading to images
@@ -145,6 +155,7 @@ This project uses **Playwright** for end-to-end (E2E) testing with Chrome DevToo
 ### Test Setup
 
 **Configuration**: `playwright.config.ts` configures:
+
 - Test directory: `tests/e2e/`
 - Base URL: `http://localhost:4321` (dev server)
 - Multiple browser targets: Chromium, Firefox, WebKit
@@ -152,6 +163,7 @@ This project uses **Playwright** for end-to-end (E2E) testing with Chrome DevToo
 - HTML reporter for test results
 
 **Test Structure**:
+
 - E2E tests in `tests/e2e/*.spec.ts`
 - Shared fixtures in `tests/e2e/fixtures.ts`
 - Tests run against running dev server
@@ -159,6 +171,7 @@ This project uses **Playwright** for end-to-end (E2E) testing with Chrome DevToo
 ### Running Tests
 
 Common test commands:
+
 - `npm run test` - Run all tests (headless, CI-friendly)
 - `npm run test:ui` - Interactive UI mode (best for development)
 - `npm run test:headed` - Run tests with visible browser windows
@@ -167,12 +180,14 @@ Common test commands:
 ### Writing Tests
 
 Tests should follow the TDD workflow pattern:
+
 1. Define test scenarios describing desired behavior
 2. Write assertions that verify outcomes
 3. Use page locators for reliable element selection
 4. Test user interactions and page navigation
 
 Example test structure:
+
 ```typescript
 import { test, expect } from './fixtures';
 

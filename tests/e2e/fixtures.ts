@@ -1,25 +1,8 @@
-import { test as base, Page } from '@playwright/test';
+import { test as base } from '@playwright/test';
 
 /**
- * Fixtures for common test utilities
+ * Re-export test and expect for use in test files
  */
-export const test = base.extend({
-  /**
-   * Utility to verify page loads without errors
-   */
-  pageLoadCheck: async ({ page }, use) => {
-    await use(async (url: string) => {
-      await page.goto(url);
-      // Check for console errors
-      const errors: string[] = [];
-      page.on('console', (msg) => {
-        if (msg.type() === 'error') {
-          errors.push(msg.text());
-        }
-      });
-      return errors;
-    });
-  },
-});
+export const test = base;
 
 export { expect } from '@playwright/test';
