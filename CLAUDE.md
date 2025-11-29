@@ -132,6 +132,39 @@ Example: `import { getPermalink } from '~/utils/permalinks'`
 - Component-specific styles in `src/components/CustomStyles.astro`
 - Dark mode support via theme toggle (system/light/dark)
 
+## Test-Driven Development Workflow
+
+When implementing new features or fixes, follow this TDD workflow:
+
+1. **Planning Phase** - Clarifying Questions
+   - Define the feature scope and acceptance criteria
+   - Identify affected components and data flows
+   - Determine edge cases and error scenarios
+   - Specify browser/device compatibility requirements
+
+2. **Red Phase** - Confirm Tests Fail
+   - Write test cases that describe desired behavior
+   - Run tests to confirm they all fail: `npm run test`
+   - Verify test output clearly shows what's missing
+
+3. **Checklist Phase** - Plan Implementation
+   - Document the minimal changes needed to pass tests
+   - Break down changes by component/file
+   - Flag any refactoring or cleanup that may be needed
+   - Consider performance and accessibility implications
+
+4. **Green Phase** - Implement Changes
+   - Write the minimal code to pass each test
+   - Run tests frequently to verify progress
+   - Commit working changes incrementally
+   - Ensure no existing tests regress
+
+5. **Refactor Phase** - Improve Code Quality
+   - Clean up implementation while keeping tests passing
+   - Extract reusable logic into utilities or components
+   - Improve type safety and documentation
+   - Run full check suite: `npm run check`
+
 ## Important Notes
 
 - **Output mode**: Currently set to `static` in `astro.config.ts`. Blog requires `prerender = true` to work properly.
