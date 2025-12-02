@@ -10,6 +10,7 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import { getPermalink } from '~/utils/permalinks';
+import aboutPhoto from '~/assets/images/markus-smet.jpg';
 
 const metadata = {
   title: 'Personal Homepage Demo',
@@ -42,12 +43,12 @@ const metadata = {
 
   <Hero
     id="hero"
-    title="What's really going on?"
+    title="What's really going on? In your team. Between your people."
     tagline="Organisational Performance"
     actions={[{ variant: 'primary', text: 'Hire me', href: getPermalink('/contact#form') }]}
   >
     <Fragment slot="subtitle">
-      When wanting more innovation, clearer strategy or performance from a struggling team you want to know what's really going on? Is it agile, innovation or strategy processes, employees, the strategy or leadership. I help you find out what is really going on.
+      By understanding what's happening with the people in the organisation, the probability of increasing returns in execution from strategy to delivery goes up. I know because I've done it.
     </Fragment>
   </Hero>
 
@@ -83,8 +84,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Colorful Image',
+      src: aboutPhoto,
+      alt: 'Image of Markus Smet',
       loading: 'eager',
     }}
   >
