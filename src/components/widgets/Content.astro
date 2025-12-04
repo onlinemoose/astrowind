@@ -22,6 +22,7 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
+  imageClasses = '',
 } = Astro.props;
 ---
 
@@ -71,7 +72,7 @@ const {
       <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2">
         {
           image && (
-            <div class="relative m-auto max-w-4xl">
+            <div class={`relative m-auto max-w-4xl ${imageClasses}`}>
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (

@@ -60,4 +60,55 @@ import '@fontsource-variable/inter';
       color: snow;
     }
   }
+
+  /* Image overlay effects */
+  .image-blur-diagonal {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+  }
+
+  /* Top-left blur */
+  .image-blur-diagonal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    mask-image: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 30%, transparent 60%);
+    -webkit-mask-image: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 30%, transparent 60%);
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 0.5rem;
+  }
+
+  .dark .image-blur-diagonal::before {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+  }
+
+  /* Bottom-right blur */
+  .image-blur-diagonal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(315deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    mask-image: linear-gradient(315deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 30%, transparent 60%);
+    -webkit-mask-image: linear-gradient(315deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 30%, transparent 60%);
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 0.5rem;
+  }
+
+  .dark .image-blur-diagonal::after {
+    background: linear-gradient(315deg, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+  }
 </style>
