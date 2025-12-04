@@ -5,8 +5,8 @@ import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
+// import Features3 from '~/components/widgets/Features3.astro';
+// import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import { getPermalink } from '~/utils/permalinks';
@@ -24,18 +24,17 @@ const metadata = {
       links={[
         { text: 'Home', href: '/' },
         { text: 'About', href: '#about' },
-        { text: 'Projects', href: '#projects' },
+        { text: 'Services', href: '#services' },
         { text: 'Testimonials', href: '#testimonials' },
         { text: 'Blog', href: '/blog' },
       ]}
       actions={[
         {
-          text: 'Hire me',
+          text: 'Book a call',
           href: '#',
         },
       ]}
       isSticky
-      showToggleTheme
     />
   </Fragment>
 
@@ -43,12 +42,13 @@ const metadata = {
 
   <Hero
     id="hero"
-    title="What's really going on? In your team. Between your people."
-    tagline="Organisational Performance"
-    actions={[{ variant: 'primary', text: 'Hire me', href: getPermalink('/contact#form') }]}
+    title="What's really going on?"
+    tagline=""
+    actions={[{ variant: 'primary', text: 'Book a call', href: getPermalink('/contact#form') }]}
   >
     <Fragment slot="subtitle">
-      By understanding what's happening with the people in the organisation, the probability of increasing returns in execution from strategy to delivery goes up. I know because I've done it.
+      If you understand what's happening between people you can address it, moving from assumptions about reality to
+      revealing what's really going on.
     </Fragment>
   </Hero>
 
@@ -65,27 +65,26 @@ const metadata = {
     <Fragment slot="content">
       <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
       <p>
-        I've created conditions where people stopped defending and started performing at a 
-        high level. Clarity became irreversible, people couldn't retreat into comfortable 
-        illusions and were inspired to let go of defences so old patterns didn't 
-        contaminate the work.
+        I've created conditions where people stopped defending and upped their performance. Clarity became irreversible,
+        people couldn't retreat into comfortable illusions and were inspired to let go of defences so old patterns
+        didn't contaminate the work.
       </p>
       <br />
       <p>
-        Once people taste genuine clarity and real collaboration, they don't accept less. 
-        They've seen what's possible. Over the last years I've studied psychology to get 
-        underneath what made this possible—how groups actually function, what enables or 
-        blocks performance, what creates the relational foundation that makes everything 
-        else work. 
+        Once people taste genuine clarity and real collaboration, they don't accept less. They've seen what's possible.
+        Over the last years I've studied psychology to get underneath what made this possible—how groups actually
+        function, what enables or blocks performance, what creates the relational foundation that makes everything else
+        work.
       </p>
       <br />
-      <p>Now I work with leaders and organisations who recognise that exceptional performance 
-        comes from understanding what's really happening between people. Not instead of 
-        strategy or structure. Alongside it, grounded in it.</p>
+      <p>
+        Now I work with leaders and organisations who recognise that exceptional performance comes from understanding
+        what's really happening between people. Grounded alongside strategy, structure and processes.
+      </p>
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-page-2 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
@@ -97,14 +96,20 @@ const metadata = {
     items={[
       {
         title:
-          'Graphic Designer <br /> <span class="font-normal">ABC Design Studio, New York, NY</span> <br /> <span class="text-sm font-normal">2021 - Present</span>',
-        description: `Collaborate with clients to understand design requirements and objectives. <br /> Develop branding solutions, including logos, color palettes, and brand guidelines. <br /> Design marketing materials such as brochures, posters, and digital assets. <br /> Create visually appealing user interfaces for websites and applications.`,
+          'Psychoanalyst Training <br /> <span class="font-normal">Personal & Psychoanalytic Studies (Part-Time)</span> <br /> <span class="text-sm font-normal">7 years</span>',
+        description: `A combination of extended group work, individual analysis, and academic study to understand human behavior and unconscious processes.`,
+        icon: 'tabler:school',
+      },
+      {
+        title:
+          'Supervisory Board Member<br /> <span class="font-normal">Subject:Resoul</span> <br /> <span class="text-sm font-normal">6 years</span>',
+        description: `Supporting an award winning organisational development consultancy in a supervisory role.`,
         icon: 'tabler:briefcase',
       },
       {
         title:
-          'Junior Graphic Designer <br /> <span class="font-normal">XYZ Creative Agency, Los Angeles, CA</span> <br /> <span class="text-sm font-normal">2018 - 2021</span>',
-        description: `Assisted senior designers in creating design concepts and visual assets. <br /> Contributed to the development of brand identities and marketing collateral. <br /> Collaborated with the marketing team to ensure consistent design across campaigns. <br /> Gained hands-on experience in various design software and tools.`,
+          'Board Level Leader<br /> <span class="font-normal">Spreadshirt, Flaconi, Brandwatch, Ninox</span> <br /> <span class="text-sm font-normal">12 years</span>',
+        description: `Led Product and Design teams at multiple high-growth tech companies through significant scaling phases. Managing teams of up to 25 people. Overseeing product strategy, establishing agile, design, research and product operations.`,
         icon: 'tabler:briefcase',
       },
     ]}
@@ -118,181 +123,177 @@ const metadata = {
     title="Education"
     items={[
       {
-        title: `Master of Fine Arts in Graphic Design <br /> <span class="font-normal">New York University's School of Design</span> <br /> <span class="text-sm font-normal">2018 - 2020</span>`,
+        title: `Master of Arts Psychoanalytic Leadership & Consulting<br /> <span class="font-normal">Berlin's International Psychoanalytic University</span> <br /> <span class="text-sm font-normal">2024 - 2026</span>`,
         icon: 'tabler:school',
       },
       {
-        title: `Bachelor of Arts in Graphic Design <br /> <span class="font-normal">New York University's School of Design</span> <br /> <span class="text-sm font-normal">2014 - 2018</span>`,
+        title: `Bachelor of Arts with Honours International Business Studies<br /> <span class="font-normal">Leeds' Metropolitan University</span> <br /> <span class="text-sm font-normal">1991 - 1995</span>`,
         icon: 'tabler:school',
       },
     ]}
     classes={{ container: 'max-w-3xl' }}
   />
 
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    title="Skills"
-    subtitle="Discover the proficiencies that allow me to bring imagination to life through design."
-    columns={3}
-    defaultIcon="tabler:point-filled"
-    items={[
-      {
-        title: 'Graphic design',
-        description: 'Proficient in crafting visually appealing designs that convey messages effectively.',
-      },
-      {
-        title: 'Branding and identity',
-        description: 'Skilled at developing cohesive brand identities, including logos and brand guidelines.',
-      },
-      {
-        title: 'User-centered design',
-        description: 'Experienced in creating user-friendly interfaces and optimizing user experiences.',
-      },
-      {
-        title: 'Adobe Creative Suite',
-        description: 'Skilled in using Photoshop, Illustrator, and InDesign to create and edit visual elements.',
-      },
-      {
-        title: 'Typography',
-        description: 'Adept in selecting and manipulating typefaces to enhance design aesthetics.',
-      },
-      {
-        title: 'Color theory',
-        description: 'Proficient in using color to evoke emotions and enhance visual harmony.',
-      },
-      {
-        title: 'Print and digital design',
-        description: 'Knowledgeable in designing for both print materials and digital platforms.',
-      },
-      {
-        title: 'Attention to detail',
-        description: 'Diligent in maintaining precision and quality in all design work.',
-      },
-      {
-        title: 'Adaptability',
-        description: 'Quick to adapt to new design trends, technologies, and client preferences.',
-      },
-    ]}
-  />
-
-  <!-- Content Widget **************** -->
+  <!-- Content Widget **************** Service 1 -->
 
   <Content
-    id="projects"
-    title="Elevating visual narratives"
-    subtitle="Embark on a design journey that surpasses pixels, entering a realm of imagination. Explore my portfolio, where passion and creativity converge to shape enthralling visual narratives."
+    id="services"
+    title="Services"
+    subtitle="How I can help you and your organisation"
     isReversed
     items={[
       {
-        title: 'Description:',
-        description:
-          'Developed a comprehensive brand identity for a tech startup, Tech Innovators, specializing in disruptive innovations. The goal was to convey a modern yet approachable image that resonated with both corporate clients and tech enthusiasts.',
+        title: 'Why Do It:',
+        icon: 'tabler:user',
+        description: 'Your relationships are strained and you want to understand why.',
       },
       {
-        title: 'Role:',
+        title: 'How It Works:',
+        icon: 'tabler:settings-question',
         description:
-          'Led the entire branding process from concept to execution. Created a dynamic logo that symbolized innovation, selected a vibrant color palette, and I designed corporate stationery, website graphics, and social media assets.',
+          "To find your agency we explore not just what others are doing but also your role in challenges. Whether its your boss, a team that won't follow or a stakeholder dynamic that is strained. Gentle but honest exploration of topics and feelings, a trusted space for you to find thoughts you haven't found words for until now. In time what lies beneath will emerge and we will find concrete actions worth taking.",
+      },
+      {
+        title: 'Format:',
+        icon: 'tabler:question-mark',
+        description:
+          'One to one sessions, 60 minutes every 2 weeks to give time for thoughts to digest. Can be in person or remote depending on location.',
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1658248165252-71e116af1b34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80',
       alt: 'Tech Design Image',
     }}
-    callToAction={{
-      target: '_blank',
-      text: 'Go to the project',
-      icon: 'tabler:chevron-right',
-      href: '#',
-    }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 1: <br /><span class="text-2xl">Brand identity for tech innovators</span>
+        Counselling For Work<br /><span class="text-2xl">Navigating Work Relationships That Matter</span>
       </h3>
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-page-2 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  <!-- Content Widget **************** Service 2 -->
 
   <Content
     isReversed
-    isAfterContent={true}
     items={[
       {
-        title: 'Description:',
+        title: 'Why Do It:',
+        icon: 'tabler:user',
+        description: 'Learn from professional peers, about your role and your behaviour patterns.',
+      },
+      {
+        title: 'How It Works:',
+        icon: 'tabler:settings-question',
         description:
-          'Designed a captivating event poster for an art and music festival, "ArtWave Fusion," aiming to showcase the synergy between visual art and music genres.',
+          'One person brings a challenging case from their work—something difficult with their team, their boss, or organisational dynamics. The group discusses it, observes, and proposes how to proceed. What emerges reveals as much about those responding as the person who brought the case. How we work with each other in these sessions gets reflected on and discussed, making our patterns more conscious.',
       },
       {
-        title: 'Role:',
-        description: `Translated the festival's creative theme into a visually striking poster. Used bold typography, vibrant colors, and abstract elements to depict the fusion of art and music. Ensured the design captured the festival's vibrant atmosphere.`,
+        title: 'Format:',
+        icon: 'tabler:question-mark',
+        description:
+          "Typically conducted in small groups with others facing similar demands. Commitment to 6 sessions over 6 months builds trust. You learn from each other's experience whilst developing genuine insight into your own practice.",
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1619983081563-430f63602796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Art and Music Poster Image',
-    }}
-    callToAction={{
-      target: '_blank',
-      text: 'Go to the project',
-      icon: 'tabler:chevron-right',
-      href: '#',
+      src: 'https://images.unsplash.com/photo-1658248165252-71e116af1b34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80',
+      alt: 'Tech Design Image',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 2: <br /><span class="text-2xl">Event poster for art & music festival</span>
+        Role-based Group Supervision<br /><span class="text-2xl">Make Your Work Patterns Conscious</span>
       </h3>
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-page-2 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  <!-- Content Widget **************** Service 3 -->
 
   <Content
     isReversed
-    isAfterContent={true}
     items={[
       {
-        title: 'Description:',
-        description: `Redesigned the e-commerce website for an eco-conscious fashion brand, GreenVogue. The objective was to align the brand's online presence with its sustainable ethos and improve user experience.`,
+        title: 'Why Do It:',
+        icon: 'tabler:user',
+        description:
+          "You and your leadership set direction but execution is weak; you want to know what's undermining your decisions.",
       },
       {
-        title: 'Role:',
-        description: `Conducted a thorough analysis of the brand's values and customer base to inform the design direction. Created a visually appealing interface with intuitive navigation, highlighting sustainable materials, and integrating a user-friendly shopping experience.`,
+        title: 'How It Works:',
+        icon: 'tabler:settings-question',
+        description:
+          'We explore not just what others are doing but also your role in challenges. Using interviews and observing key meetings, anxiety, defensive patterns, and avoidance between teams, individuals, and leaders becomes visible. I examine whether company goals are actually clear to employees and whether stated values are genuinely upheld. Once dynamics are identified, individual counselling, conflict mediation, and group work can help move teams forward.',
+      },
+      {
+        title: 'Format:',
+        icon: 'tabler:question-mark',
+        description:
+          '3 month engagement with 4 days p/month, starts with a 1 week assessment where initial issues are shared and focus is prioritised.',
       },
     ]}
     image={{
-      src: 'https://plus.unsplash.com/premium_photo-1683288295841-782fa47e4770?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-      alt: 'Fashion e-commerce Image',
-    }}
-    callToAction={{
-      target: '_blank',
-      text: 'Go to the project',
-      icon: 'tabler:chevron-right',
-      href: '#',
+      src: 'https://images.unsplash.com/photo-1658248165252-71e116af1b34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80',
+      alt: 'Tech Design Image',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 3: <br /><span class="text-2xl">E-commerce website redesign for fashion brand</span>
+        Organisational Development<br /><span class="text-2xl">Understand What Breaks Your Execution</span>
       </h3>
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-page-2 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
-  <!-- Testimonials Widget *********** -->
+  <!-- Content Widget **************** Service 4 -->
+
+  <Content
+    isReversed
+    items={[
+      {
+        title: 'Why Do It:',
+        icon: 'tabler:user',
+        description: 'Leaders seeking unwelcome truths. Work for organisations serious about being challenged.',
+      },
+      {
+        title: 'How It Works:',
+        icon: 'tabler:settings-question',
+        description:
+          "Individual and leadership team coaching to uncover risks and establish a clear goal. Build a team tasked with finding problems obstructing that goal—problems others can't or won't see. Provide group supervision for the team as they question established practice and push back on comfortable assumptions.",
+      },
+      {
+        title: 'Format:',
+        icon: 'tabler:question-mark',
+        description: 'Initially onsite, follow up work and supervision possible remotely.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1658248165252-71e116af1b34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80',
+      alt: 'Tech Design Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Organisational Disruption<br /><span class="text-2xl">Sanctioned Disruption Of The Status Quo</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-page-2 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Testimonials Widget *********** 
 
   <Testimonials
     id="testimonials"
@@ -326,45 +327,20 @@ const metadata = {
           alt: 'Laura Simmons Image',
         },
       },
-      {
-        testimonial: `We entrusted Sarah with revamping our website's user interface, and the results were astounding. Her intuitive design sense enhanced user experience, leading to a significant increase in engagement. She's a designer who truly understands the synergy of aesthetics and functionality.`,
-        name: 'Alex Foster',
-        job: 'Director of web services',
-        image: {
-          src: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Alex Foster Image',
-        },
-      },
-      {
-        testimonial: `She took our vision and elevated it beyond imagination. Her ability to capture brand essence and translate it into design is nothing short of remarkable. Working with her has been an inspiring journey.`,
-        name: 'Jessica Collins',
-        job: 'Product Manager',
-        image: {
-          src: 'https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=778&q=80',
-          alt: 'Jessica Collins Image',
-        },
-      },
-      {
-        testimonial: `Her ability to transform concepts into captivating visuals is nothing short of extraordinary. She took our event poster idea and turned it into a visual masterpiece that perfectly captured the essence of our festival. Sarah's dedication, creativity, and knack for delivering beyond expectations make her an invaluable asset to any project.`,
-        name: 'Michael Carter',
-        job: 'Event Coordinator',
-        image: {
-          src: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Michael Carter Image',
-        },
-      },
     ]}
   />
+
+  -->
 
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
-    title="Let's create together"
-    subtitle="Ready to transform your vision into captivating designs?"
+    title="Find Out What's Really Going On"
+    subtitle="If you sense something's wrong but can't quite name it, let's talk."
     actions={[
       {
         variant: 'primary',
-        text: 'Hire me',
+        text: 'Book a call',
         href: '/',
       },
     ]}
@@ -374,11 +350,11 @@ const metadata = {
 
   <BlogLatestPosts
     id="blog"
-    title="Explore my insightful articles on my blog"
-    information={`Dive into a realm of design wisdom and creative inspiration, where you'll find invaluable insights, practical tips, and captivating narratives that elevate and enrich your creative journey.`}
+    title="Explore insightful articles on my blog"
+    information={`Dive into articles making psychoanalysis accessible, where you'll find invaluable insights, practical advice, and captivating narratives that reveal the power of unconscious processes.`}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-page-2 dark:bg-transparent"></div>
     </Fragment>
   </BlogLatestPosts>
 </Layout>

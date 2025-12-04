@@ -6,6 +6,9 @@
   .bg-page {
     background-color: var(--aw-color-bg-page);
   }
+  .bg-page-2 {
+    background-color: var(--aw-color-bg-page-secondary);
+  }
   .bg-dark {
     background-color: var(--aw-color-bg-page-dark);
   }
