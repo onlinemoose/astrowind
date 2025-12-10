@@ -40,14 +40,14 @@ const {
         {
           title && (
             <h1
-              class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter"
+              class="text-4xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tighter mb-6 font-heading dark:text-gray-200 intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter"
               set:html={title}
             />
           )
         }
         </div>
         {content && <Fragment set:html={content} />}
-        <div class="max-w-3xl mx-auto lg:max-w-none">
+        <div class="max-w-3xl mx-auto lg:max-w-none mt-8">
         {
             actions && (
               <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-7xl intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">

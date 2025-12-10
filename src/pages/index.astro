@@ -2,7 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Header from '~/components/widgets/Header.astro';
-import Hero3 from '~/components/widgets/Hero3.astro';
+import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 // import Features3 from '~/components/widgets/Features3.astro';
@@ -44,16 +44,17 @@ const metadata = {
 
   <!-- Hero2 Widget ******************* -->
 
-  <Hero3
+  <Hero
     id="hero"
     title="What's really going on?"
     tagline=""
     actions={[{ variant: 'primary', text: 'Book a call', href: getPermalink('/contact#form') }]}
   >
     <Fragment slot="subtitle">
-      If you understand what's happening between people you can address it, moving from assumptions about reality to revealing what's really going on.
+      Makes you more effective because you understand what's going on between people. Gain clarity on
+      relationships, dynamics, and organisational patterns that influence your performance.
     </Fragment>
-  </Hero3>
+  </Hero>
 
   <!-- Content Widget **************** -->
 
@@ -148,7 +149,7 @@ const metadata = {
       {
         title: 'Why Do It:',
         icon: 'tabler:user',
-        description: 'Your relationships are strained and you want to understand why.',
+        description: 'Work relationships are strained and you want to understand why.',
       },
       {
         title: 'How It Works:',
@@ -165,13 +166,13 @@ const metadata = {
     ]}
     image={{
       src: workCounsellingImage,
-      alt: 'Counselling For Work',
+      alt: 'Profession Counselling',
     }}
     imageClasses="image-blur-diagonal"
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Counselling For Work<br /><span class="text-2xl">Navigating Work Relationships That Matter</span>
+        Profession Counselling<br /><span class="text-2xl">Navigating Work Challenges</span>
       </h3>
     </Fragment>
 
@@ -206,13 +207,13 @@ const metadata = {
     ]}
     image={{
       src: groupSupervisionImage,
-      alt: 'Role-based Group Supervision',
+      alt: 'Profession Group Supervision',
     }}
     imageClasses="image-blur-diagonal"
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Role-based Group Supervision<br /><span class="text-2xl">Make Your Work Patterns Conscious</span>
+        Profession Group Supervision<br /><span class="text-2xl">Nurturing More Impact In Your Role</span>
       </h3>
     </Fragment>
 
@@ -231,7 +232,7 @@ const metadata = {
         title: 'Why Do It:',
         icon: 'tabler:user',
         description:
-          "You and your leadership set direction but execution is weak; you want to know what's undermining your decisions.",
+          "You and your leadership set direction but execution is weak; reduce what's undermining those decisions.",
       },
       {
         title: 'How It Works:',
@@ -248,13 +249,13 @@ const metadata = {
     ]}
     image={{
       src: organisationalDevelopmentImage,
-      alt: 'Organisational Development',
+      alt: 'Leading Organisational Development',
     }}
     imageClasses="image-blur-diagonal-line"
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Organisational Development<br /><span class="text-2xl">Understand What Breaks Your Execution</span>
+        Leading Organisational Development<br /><span class="text-2xl">Build Organisational Competence</span>
       </h3>
     </Fragment>
 
@@ -272,13 +273,13 @@ const metadata = {
       {
         title: 'Why Do It:',
         icon: 'tabler:user',
-        description: 'Leaders seeking unwelcome truths to challenge and evolve the organisation.',
+        description: 'Leaders seeking unwelcome customer truths to challenge and evolve the organisation.',
       },
       {
         title: 'How It Works:',
         icon: 'tabler:settings-question',
         description:
-          "Individual and leadership team coaching to uncover risks and establish a clear goal. Build a team tasked with finding problems obstructing that goal—problems others can't or won't see. Provide group supervision for the team as they question established practice and push back on comfortable assumptions.",
+          "Individual and leadership team coaching to uncover risks and establish a clear goal. Build clear responsibilities to identify customer problems and bring them into the organisation. Provide group supervision for the team as they question established practice and push back on comfortable assumptions.",
       },
       {
         title: 'Format:',
@@ -288,13 +289,13 @@ const metadata = {
     ]}
     image={{
       src: organisationalDisturbanceImage,
-      alt: 'Organisational Transformation',
+      alt: 'Leading Customer First',
     }}
     imageClasses="image-blur-diagonal"
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Organisational Transformation<br /><span class="text-2xl">Calibrated Disruption Of The Status Quo</span>
+        Leading Customer First<br /><span class="text-2xl">Bring the outside-in to the Organisation</span>
       </h3>
     </Fragment>
 
