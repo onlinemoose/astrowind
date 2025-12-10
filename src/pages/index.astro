@@ -2,7 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Header from '~/components/widgets/Header.astro';
-import Hero from '~/components/widgets/Hero.astro';
+import Hero3 from '~/components/widgets/Hero3.astro';
 import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 // import Features3 from '~/components/widgets/Features3.astro';
@@ -44,17 +44,16 @@ const metadata = {
 
   <!-- Hero2 Widget ******************* -->
 
-  <Hero
+  <Hero3
     id="hero"
     title="What's really going on?"
     tagline=""
     actions={[{ variant: 'primary', text: 'Book a call', href: getPermalink('/contact#form') }]}
   >
     <Fragment slot="subtitle">
-      If you understand what's happening between people you can address it, moving from assumptions about reality to
-      revealing what's really going on.
+      If you understand what's happening between people you can address it, moving from assumptions about reality to revealing what's really going on.
     </Fragment>
-  </Hero>
+  </Hero3>
 
   <!-- Content Widget **************** -->
 
@@ -106,7 +105,7 @@ const metadata = {
       },
       {
         title:
-          'Supervisory Board Member<br /> <span class="font-normal">Subject:Resoul</span> <br /> <span class="text-sm font-normal">6 years</span>',
+          'Supervisory Board Member<br /> <span class="font-normal">Subject:Resoul Organisational Development Consultancy</span> <br /> <span class="text-sm font-normal">6 years</span>',
         description: `Supporting an award winning organisational development consultancy in a supervisory role.`,
         icon: 'tabler:briefcase',
       },
@@ -190,7 +189,7 @@ const metadata = {
       {
         title: 'Why Do It:',
         icon: 'tabler:user',
-        description: 'Learn from professional peers, about your role and your behaviour patterns.',
+        description: 'Learn from professional peers about your role and build more effective behaviour patterns.',
       },
       {
         title: 'How It Works:',
@@ -289,13 +288,13 @@ const metadata = {
     ]}
     image={{
       src: organisationalDisturbanceImage,
-      alt: 'Organisational Disruption',
+      alt: 'Organisational Transformation',
     }}
     imageClasses="image-blur-diagonal"
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Organisational Disruption<br /><span class="text-2xl">Sanctioned Disruption Of The Status Quo</span>
+        Organisational Transformation<br /><span class="text-2xl">Calibrated Disruption Of The Status Quo</span>
       </h3>
     </Fragment>
 
