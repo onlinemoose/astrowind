@@ -1,6 +1,6 @@
 site:
   name: Feldklang
-  site: 'https://astrowind.vercel.app'
+  site: 'https://feldklang.netlify.app'
   base: '/'
   trailingSlash: false
 
