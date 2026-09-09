@@ -26,16 +26,14 @@ const {
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
-  <div
-    class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-white/10"
-  >
+  <div class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-white/10">
     <Headline
       title={title}
       subtitle={subtitle}
       tagline={tagline}
       classes={{
         container: 'mb-0 md:mb-0',
-        title: 'text-4xl md:text-4xl font-bold tracking-tighter mb-4 font-heading',
+        title: 'text-[clamp(2rem,1.6rem+1.5vw,2.75rem)] mb-4',
         subtitle: 'text-xl text-muted dark:text-slate-400',
       }}
     />
