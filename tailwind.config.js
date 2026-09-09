@@ -21,9 +21,11 @@ export default {
         slate: colors.stone,
       },
       fontFamily: {
-        sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],
-        serif: ['var(--aw-font-serif, ui-serif)', ...defaultTheme.fontFamily.serif],
         heading: ['var(--aw-font-heading, ui-serif)', ...defaultTheme.fontFamily.serif],
+        // Body copy typeface — see --aw-font-body in CustomStyles.astro.
+        // Kept distinct from Tailwind's default `sans`/`serif` keys (unused
+        // in this template) so `font-body` reads as what it actually sets.
+        body: ['var(--aw-font-body, ui-serif)', ...defaultTheme.fontFamily.serif],
       },
 
       animation: {

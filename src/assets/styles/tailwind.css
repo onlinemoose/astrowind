@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  /* Tailwind's preflight only wires its built-in `sans`/`serif` keys into
+     the cascade automatically; our body copy typeface lives under the
+     semantically-named `body` key instead (see --aw-font-body), so it
+     needs setting explicitly here. */
+  body {
+    font-family: theme('fontFamily.body');
+  }
+}
+
 @layer utilities {
   .bg-page {
     background-color: var(--aw-color-bg-page);
