@@ -26,11 +26,11 @@ const metadata = {
     <Fragment slot="content">
       <p class="eyebrow mb-2">About</p>
       <h1 class="primary-heading primary-heading--hero text-[clamp(2.5rem,4.5vw,4rem)] dark:text-white">
-        Product & Service Delivery Expert With Deep Psychological Understanding of Groups
+        Product & Service Delivery Expert With Deep Psychological Understanding of Work
       </h1>
       <p class="text-muted dark:text-slate-400">
-        I hold a Masters in Coaching and Supervision focused on the human dynamics of organisations, the point where
-        conscious meets unconscious behaviour. Left unattended, that gap turns ambitious plans into guesswork.
+        I hold a Masters in Coaching and Supervision focused on the human dynamics of organisations, where conscious
+        meets unconscious behaviour.
       </p>
     </Fragment>
 
@@ -105,3 +105,12 @@ const metadata = {
     </Fragment>
   </CallToAction>
 </Layout>
+
+<style>
+  /* The intro copy is short next to the tall portrait, so the Content
+     widget's default vertical centring drops it halfway down the image.
+     Pin the text column to the top instead. */
+  :global(#about .self-center) {
+    align-self: flex-start;
+  }
+</style>
