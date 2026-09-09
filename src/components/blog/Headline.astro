@@ -6,10 +6,12 @@ const {
 } = Astro.props;
 ---
 
-{/* Same treatment as the Services page hero (Hero widget): eyebrow, then
-   Fraunces display h1 at the hero clamp, then a text-muted standfirst. */}
+{
+  /* Same treatment as the Services page hero (Hero widget): eyebrow, then
+   large Fraunces display h1, then a text-muted standfirst. */
+}
 <header class="mb-8 md:mb-16 max-w-3xl">
   {tagline && <p class="eyebrow" set:html={tagline} />}
-  <h1 class="primary-heading primary-heading--hero text-[clamp(2.75rem,8vw,6rem)] mb-4" set:html={title} />
+  <h1 class="primary-heading primary-heading--hero" set:html={title} />
   {subtitle && <div class="text-xl text-muted mb-6 dark:text-slate-300" set:html={subtitle} />}
 </header>

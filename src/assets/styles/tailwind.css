@@ -55,29 +55,53 @@
 
 @layer components {
   /* Design system §01/§04/§06: every heading is Fraunces 400, tracking
-     −.018em, line-height 1 (−.012em / 1.04 below 639px). One rule for
-     h1–h6; size comes from each usage's own Tailwind clamp utility. The
-     `--hero` / `--sub` modifiers are retained as no-ops so existing markup
-     keeps working — the system deliberately treats all headings alike. */
+     −.018em, line-height 1 (−.012em / 1.04 below 639px), warm-ink colour,
+     with one proportional gap beneath it. Font-size is the ONLY thing that
+     varies, and it lives here on the tier modifiers rather than inline in
+     markup:
+       .primary-heading            section H2      clamp 36 → 52px
+       .primary-heading--hero      large page hero clamp 44 → 96px
+       .primary-heading--hero-sm   small page hero clamp 40 → 64px
+       .primary-heading--sub       subsection H3   clamp 30 → 40px
+       .primary-heading--card      card title      clamp 22 → 28px */
   .primary-heading,
   .primary-heading--hero,
-  .primary-heading--sub {
+  .primary-heading--hero-sm,
+  .primary-heading--sub,
+  .primary-heading--card {
     @apply font-heading;
     color: var(--aw-color-text-heading);
     font-weight: 400;
     font-optical-sizing: auto;
+    font-size: clamp(2.25rem, 3.4vw, 3.25rem);
     letter-spacing: -0.018em;
     line-height: 1;
     text-wrap: balance;
-    /* One proportional gap below every heading — no per-usage `mb-*`. */
     margin-bottom: 0.4em;
+  }
+
+  .primary-heading--hero {
+    font-size: clamp(2.75rem, 8vw, 6rem);
+    /* Bigger type wants a proportionally tighter gap than 0.4em would give. */
+    margin-bottom: 0.3em;
+  }
+  .primary-heading--hero-sm {
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+  }
+  .primary-heading--sub {
+    font-size: clamp(1.875rem, 2.6vw, 2.5rem);
+  }
+  .primary-heading--card {
+    font-size: clamp(1.375rem, 1.1rem + 0.8vw, 1.75rem);
   }
 
   /* §01: emphasis words in a heading are set in the italic optical cut and
      take the accent colour (weight unchanged). */
   .primary-heading :is(em, i),
   .primary-heading--hero :is(em, i),
-  .primary-heading--sub :is(em, i) {
+  .primary-heading--hero-sm :is(em, i),
+  .primary-heading--sub :is(em, i),
+  .primary-heading--card :is(em, i) {
     color: var(--aw-color-accent);
     font-style: italic;
     font-weight: inherit;
@@ -92,7 +116,9 @@
   @media (max-width: 639px) {
     .primary-heading,
     .primary-heading--hero,
-    .primary-heading--sub {
+    .primary-heading--hero-sm,
+    .primary-heading--sub,
+    .primary-heading--card {
       letter-spacing: -0.012em;
       line-height: 1.04;
     }
@@ -104,6 +130,7 @@
     @apply inline-flex items-center gap-[0.65rem] font-ui font-medium uppercase;
     font-size: 0.71875rem; /* 11.5px */
     letter-spacing: 0.18em;
+    margin-bottom: 0.85rem;
     color: var(--aw-color-accent);
   }
   .eyebrow::before {
@@ -140,15 +167,16 @@
 
   /* "Accent" style: solid terracotta, hover → terracotta-deep. */
   .btn-primary {
-    @apply btn text-white;
+    @apply btn;
     background-color: var(--aw-color-primary);
     border-color: var(--aw-color-primary);
+    color: var(--aw-color-paper);
   }
   .btn-primary:hover {
     background-color: var(--aw-color-secondary);
     border-color: var(--aw-color-secondary);
-    color: #fff;
-    box-shadow: var(--aw-shadow-soft, 0 32px 80px -54px rgb(23 18 13 / 0.48));
+    color: var(--aw-color-paper);
+    box-shadow: var(--aw-shadow-soft);
   }
 
   .btn-secondary {
@@ -177,7 +205,7 @@
 }
 
 #header.scroll .btn-secondary {
-  @apply bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
+  @apply bg-primary text-paper border-primary hover:bg-secondary hover:border-secondary hover:text-paper dark:text-paper dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
 }
 /* #header.scroll > div:last-child {
   @apply py-3;
