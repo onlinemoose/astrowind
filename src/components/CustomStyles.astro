@@ -1,5 +1,11 @@
 ---
 import '@fontsource-variable/newsreader';
+// Self-hosted Fraunces for headings. `full` carries every axis — wght
+// 100–900, opsz 9–144, plus the SOFT and WONK custom axes — which the
+// Google Fonts build does not expose. See --aw-font-heading below and
+// `.primary-heading` in tailwind.css for the axis values in use.
+import '@fontsource-variable/fraunces/full.css';
+import '@fontsource-variable/fraunces/full-italic.css';
 
 // 'DM Sans'
 // Nunito
@@ -22,15 +28,22 @@ import '@fontsource-variable/newsreader';
 <style is:inline>
   :root {
     --aw-font-body: 'Newsreader Variable';
-    --aw-font-heading: 'Fraunces';
+    --aw-font-heading: 'Fraunces Variable';
+    /* UI chrome — nav links, buttons. See --aw-font-ui usage in tailwind.config.js. */
+    --aw-font-ui: 'Spline Sans Mono';
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    /* Terracotta — primary accent, CTAs, links. `secondary` is a darker
+       step for hover/active states. */
+    --aw-color-primary: #a84225;
+    --aw-color-secondary: #8a3620;
+    --aw-color-accent: #a84225;
 
-    --aw-color-text-heading: rgb(0 0 0);
+    /* Warm near-black, not pure #000 — softens the display headings
+       (matches the feldklang reference's --color-ink). Consumed by
+       `.primary-heading` in tailwind.css. */
+    --aw-color-text-heading: #17120d;
     --aw-color-text-default: rgb(16 16 16);
-    --aw-color-text-muted: rgb(16 16 16 / 66%);
+    --aw-color-text-muted: rgb(16 16 16 / 80%);
     --aw-color-bg-page: #f1e7cb;
     --aw-color-bg-page-secondary: #f0f3e5;
     --aw-color-bg-page-dark: rgb(3 6 32);
@@ -42,15 +55,17 @@ import '@fontsource-variable/newsreader';
 
   .dark {
     --aw-font-body: 'Newsreader Variable';
-    --aw-font-heading: 'Fraunces';
+    --aw-font-heading: 'Fraunces Variable';
+    --aw-font-ui: 'Spline Sans Mono';
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    /* Lighter terracotta on the near-black dark ground for legible CTAs/links. */
+    --aw-color-primary: #cd5a3b;
+    --aw-color-secondary: #b84a2e;
+    --aw-color-accent: #cd5a3b;
 
     --aw-color-text-heading: #f5efe2;
     --aw-color-text-default: #e8e0cd;
-    --aw-color-text-muted: rgb(232 224 205 / 66%);
+    --aw-color-text-muted: rgb(232 224 205 / 80%);
     --aw-color-bg-page: #1b1712;
     --aw-color-bg-page-dark: #1b1712;
 

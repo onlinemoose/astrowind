@@ -9,6 +9,12 @@
      needs setting explicitly here. */
   body {
     font-family: theme('fontFamily.body');
+    /* Match `fontSize.base` in tailwind.config.js so elements with no
+       `text-*` utility (e.g. `<p class="text-muted mt-2">`) don't fall
+       back to the browser default 16px and read small next to bumped copy. */
+    font-size: 1.1875rem;
+    font-weight: 400;
+    line-height: 1.66;
   }
 }
 
@@ -34,29 +40,76 @@
 }
 
 @layer components {
-  /* Shared typographic identity for the site's top-level headings (H1/H2).
-     Carries family/weight/tracking/rhythm only — font-size stays with each
-     usage's own Tailwind size utilities, since a hero H1 and a section H2
-     need different scales. See feldklang design-system reference: Fraunces
-     400, -.018em tracking, line-height 1, easing off slightly on mobile so
-     headlines stay compact rather than airy on small screens. */
+  /* Shared typographic identity for the site's top-level headings. The base
+     rule is tuned for section H2s; `.primary-heading--hero` tightens tracking
+     and leading for the much larger hero H1. Font-size stays with each
+     usage's own Tailwind size utility. Modelled on the feldklang design
+     reference: self-hosted Fraunces (@fontsource-variable/fraunces,
+     CustomStyles.astro) at a high optical size (delicate, high-contrast
+     display cut), light weight 300, tight tracking and near-solid leading
+     that both ease off slightly on mobile. */
   .primary-heading {
     @apply font-heading;
-    font-weight: 400;
-    letter-spacing: -0.018em;
+    color: var(--aw-color-text-heading);
+    /* Weight is driven through `font-variation-settings` below, NOT this
+       property: once `font-variation-settings` is set, browsers stop
+       mapping `font-weight` onto the `wght` axis of the variable font.
+       Kept here only for the fallback serif stack and a11y tooling. */
+    font-weight: 300;
+    /* Every knob the self-hosted `full` build exposes, in one place:
+         opsz 9–144  — the legibility lever, NOT weight: 144 makes hairlines
+                       wispy at light weight; 52 keeps a display thick/thin
+                       contrast while the thins stay solid
+         wght 100–900 — must be set here or `font-weight` is a no-op (above)
+         SOFT 0–100  — 0 = crisp terminals (raise for a softer, rounder feel)
+         WONK 0|1    — 0 = the calm glyph set (1 swaps in the quirky forms) */
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' 52, 'wght' 300, 'SOFT' 0, 'WONK' 0;
+    letter-spacing: -0.025em;
     line-height: 1;
     text-wrap: balance;
+    /* Single source of truth for the gap below every H1/H2. `em` keeps it
+       proportional — a hero H1 gets more space beneath it than a section
+       H2, with no per-usage `mb-*`. */
+    margin-bottom: 0.4em;
+  }
+
+  /* Hero H1: larger, so tracking and leading pull in further. */
+  .primary-heading--hero {
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+  }
+
+  /* Sub-heading (h3-level): smaller than a section H2, so weight comes up
+     and the optical size drops for a sturdier letterform; tracking eases
+     and leading opens a touch for two-line titles. */
+  .primary-heading--sub {
+    font-variation-settings: 'opsz' 40, 'wght' 380, 'SOFT' 0, 'WONK' 0;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  /* Zero the following element's default top margin (UA styles, prose,
+     `.dd`) so the gap is exactly the `margin-bottom` above. A `mt-*`
+     utility on that element still wins where a specific spot needs more. */
+  .primary-heading + * {
+    margin-top: 0;
   }
 
   @media (max-width: 639px) {
     .primary-heading {
-      letter-spacing: -0.012em;
-      line-height: 1.04;
+      letter-spacing: -0.018em;
+      line-height: 1.06;
+    }
+
+    .primary-heading--hero {
+      letter-spacing: -0.028em;
+      line-height: 0.98;
     }
   }
 
   .btn {
-    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+    @apply inline-flex items-center justify-center rounded-md border-primary border bg-transparent font-ui font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-primary focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-secondary dark:text-slate-300 dark:border-primary dark:hover:bg-slate-800 dark:hover:border-secondary cursor-pointer;
   }
 
   .btn-primary {

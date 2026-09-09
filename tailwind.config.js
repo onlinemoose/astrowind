@@ -26,6 +26,21 @@ export default {
         // Kept distinct from Tailwind's default `sans`/`serif` keys (unused
         // in this template) so `font-body` reads as what it actually sets.
         body: ['var(--aw-font-body, ui-serif)', ...defaultTheme.fontFamily.serif],
+        // UI chrome — nav links and buttons. See --aw-font-ui in CustomStyles.astro.
+        ui: ['var(--aw-font-ui, ui-monospace)', ...defaultTheme.fontFamily.mono],
+      },
+
+      // Newsreader runs optically small, so the whole type scale is bumped
+      // up a step from Tailwind's defaults for a larger editorial reading
+      // size. Values are [font-size, line-height]. Headings (text-3xl+) are
+      // left near their defaults so the hierarchy stays intact.
+      fontSize: {
+        xs: ['0.8125rem', { lineHeight: '1.5' }], // 13px
+        sm: ['0.9375rem', { lineHeight: '1.6' }], // 15px
+        base: ['1.1875rem', { lineHeight: '1.66' }], // 19px — matches the body rule
+        lg: ['1.375rem', { lineHeight: '1.66' }], // 22px
+        xl: ['1.625rem', { lineHeight: '1.6' }], // 26px — hero subtitle, lead body
+        '2xl': ['2rem', { lineHeight: '1.5' }], // 32px
       },
 
       animation: {
