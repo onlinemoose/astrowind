@@ -26,52 +26,72 @@ import '@fontsource-variable/fraunces/full-italic.css';
 ---
 
 <style is:inline>
+  /* Palette per the feldklang design system (Mentora reference):
+     warm "paper" tones, near-black "ink", one terracotta accent. No pure
+     white or pure black anywhere. AstroWind's --aw-* names are kept since
+     the Tailwind config and components already consume them. */
   :root {
     --aw-font-body: 'Newsreader Variable';
     --aw-font-heading: 'Fraunces Variable';
     /* UI chrome — nav links, buttons. See --aw-font-ui usage in tailwind.config.js. */
     --aw-font-ui: 'Spline Sans Mono';
 
-    /* Terracotta — primary accent, CTAs, links. `secondary` is a darker
-       step for hover/active states. */
-    --aw-color-primary: #a84225;
-    --aw-color-secondary: #8a3620;
-    --aw-color-accent: #a84225;
+    /* Extended palette (design system §02) */
+    --aw-color-paper: #f7f2e8;
+    --aw-color-paper-2: #efe7d9;
+    --aw-color-paper-3: #e6dccb;
+    --aw-color-ink: #17120d;
+    --aw-color-ink-deep: #0d0906;
+    --aw-color-ink-soft: #463d33;
+    --aw-color-muted: #67594a;
+    --aw-color-clay: #b86b42;
+    --aw-color-olive: #515943;
+    --aw-color-terracotta: #a84225;
+    --aw-color-terracotta-deep: #7f2e1a;
+    --aw-line: color-mix(in srgb, var(--aw-color-ink) 14%, transparent);
+    --aw-line-strong: color-mix(in srgb, var(--aw-color-ink) 28%, transparent);
 
-    /* Warm near-black, not pure #000 — softens the display headings
-       (matches the feldklang reference's --color-ink). Consumed by
-       `.primary-heading` in tailwind.css. */
-    --aw-color-text-heading: #17120d;
-    --aw-color-text-default: rgb(16 16 16);
-    --aw-color-text-muted: rgb(16 16 16 / 80%);
-    --aw-color-bg-page: #f1e7cb;
-    --aw-color-bg-page-secondary: #f0f3e5;
-    --aw-color-bg-page-dark: rgb(3 6 32);
+    /* Terracotta — the single accent: CTAs, links, emphasis.
+       `secondary` is the deep step for hover/active. */
+    --aw-color-primary: var(--aw-color-terracotta);
+    --aw-color-secondary: var(--aw-color-terracotta-deep);
+    --aw-color-accent: var(--aw-color-terracotta);
+
+    --aw-color-text-heading: var(--aw-color-ink);
+    --aw-color-text-default: var(--aw-color-ink-soft);
+    --aw-color-text-muted: var(--aw-color-muted);
+    --aw-color-text-page: var(--aw-color-ink);
+    --aw-color-bg-page: var(--aw-color-paper);
+    --aw-color-bg-page-secondary: var(--aw-color-paper-2);
+    --aw-color-bg-page-dark: var(--aw-color-ink);
 
     ::selection {
-      background-color: lavender;
+      background-color: var(--aw-color-ink);
+      color: var(--aw-color-paper);
     }
   }
 
+  /* Dark surface (design system §03 — footer/inverted blocks): ink ground,
+     paper text, accent swaps to the lighter clay. */
   .dark {
     --aw-font-body: 'Newsreader Variable';
     --aw-font-heading: 'Fraunces Variable';
     --aw-font-ui: 'Spline Sans Mono';
 
-    /* Lighter terracotta on the near-black dark ground for legible CTAs/links. */
-    --aw-color-primary: #cd5a3b;
-    --aw-color-secondary: #b84a2e;
-    --aw-color-accent: #cd5a3b;
+    --aw-color-primary: var(--aw-color-clay);
+    --aw-color-secondary: #9c5535;
+    --aw-color-accent: var(--aw-color-clay);
 
-    --aw-color-text-heading: #f5efe2;
-    --aw-color-text-default: #e8e0cd;
-    --aw-color-text-muted: rgb(232 224 205 / 80%);
-    --aw-color-bg-page: #1b1712;
-    --aw-color-bg-page-dark: #1b1712;
+    --aw-color-text-heading: var(--aw-color-paper);
+    --aw-color-text-default: var(--aw-color-paper-2);
+    --aw-color-text-muted: rgb(247 242 232 / 68%);
+    --aw-color-text-page: var(--aw-color-paper);
+    --aw-color-bg-page: var(--aw-color-ink);
+    --aw-color-bg-page-dark: var(--aw-color-ink-deep);
 
     ::selection {
-      background-color: #000000;
-      color: snow;
+      background-color: var(--aw-color-paper);
+      color: var(--aw-color-ink);
     }
   }
 

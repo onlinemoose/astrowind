@@ -67,7 +67,7 @@ const metadata = {
     actions={[{ variant: 'primary', text: 'Why?', href: '#mindset' }]}
   >
     <Fragment slot="subtitle">
-      <span class="hero-subtitle-text"> Get ahead. Attend to the <i>human dynamics</i> of ambitious work. </span>
+      <span class="hero-subtitle-text"> Get ahead. Attend to the <b><i class="text-olive">human dynamics</i></b> of ambitious work. </span>
     </Fragment>
 
     <Fragment slot="bg">
@@ -104,7 +104,7 @@ const metadata = {
       </p>
       <br />
       <p class="mb-6">
-        So shaping <b><i>people's experience of work</i></b> became my focus because I wanted to know how building good dynamics
+        So shaping <b><i class="text-olive">people's experience of work</i></b> became my focus because I wanted to know how building good dynamics
         worked to increase the likelihood of success.
       </p>
       <div
@@ -170,7 +170,7 @@ const metadata = {
     ]}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-green-50 dark:bg-green-950/30"></div>
+      <div class="absolute inset-0 bg-page-2 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
 
@@ -261,6 +261,9 @@ const metadata = {
       background: color-mix(in srgb, var(--aw-color-bg-page) 85%, transparent);
       border-radius: 0.4em;
       padding: 0.2em 0.5em;
+      /* Pull back by the horizontal padding so the text itself still lines
+         up with the title/button; only the translucent panel bleeds left. */
+      margin-left: -0.5em;
     }
   }
 

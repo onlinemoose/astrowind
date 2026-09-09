@@ -3,18 +3,32 @@
 @tailwind utilities;
 
 @layer base {
-  /* Tailwind's preflight only wires its built-in `sans`/`serif` keys into
-     the cascade automatically; our body copy typeface lives under the
-     semantically-named `body` key instead (see --aw-font-body), so it
-     needs setting explicitly here. */
+  /* Design system §04/§06 body rhythm (Newsreader, weight 400, line-height
+     1.66) — but one notch larger than the doc's 18px: at 19px Newsreader's
+     small x-height reads comfortably, 18px tested too small here. Drops to
+     18px below 639px. Set on `body` (not just the `base` fontSize key) so
+     class-less elements match. */
   body {
     font-family: theme('fontFamily.body');
-    /* Match `fontSize.base` in tailwind.config.js so elements with no
-       `text-*` utility (e.g. `<p class="text-muted mt-2">`) don't fall
-       back to the browser default 16px and read small next to bumped copy. */
     font-size: 1.1875rem;
     font-weight: 400;
     line-height: 1.66;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 639px) {
+    body {
+      font-size: 1.125rem;
+      line-height: 1.62;
+    }
+  }
+
+  /* §06: emphasis runs in body copy are coloured with the accent, not just
+     italicised. Scoped away from headings, which colour their own em/i. */
+  :where(p, li, blockquote, figcaption, dd) em,
+  :where(p, li, blockquote, figcaption, dd) i {
+    color: var(--aw-color-accent);
+    font-style: italic;
   }
 }
 
@@ -40,80 +54,101 @@
 }
 
 @layer components {
-  /* Shared typographic identity for the site's top-level headings. The base
-     rule is tuned for section H2s; `.primary-heading--hero` tightens tracking
-     and leading for the much larger hero H1. Font-size stays with each
-     usage's own Tailwind size utility. Modelled on the feldklang design
-     reference: self-hosted Fraunces (@fontsource-variable/fraunces,
-     CustomStyles.astro) at a high optical size (delicate, high-contrast
-     display cut), light weight 300, tight tracking and near-solid leading
-     that both ease off slightly on mobile. */
-  .primary-heading {
+  /* Design system §01/§04/§06: every heading is Fraunces 400, tracking
+     −.018em, line-height 1 (−.012em / 1.04 below 639px). One rule for
+     h1–h6; size comes from each usage's own Tailwind clamp utility. The
+     `--hero` / `--sub` modifiers are retained as no-ops so existing markup
+     keeps working — the system deliberately treats all headings alike. */
+  .primary-heading,
+  .primary-heading--hero,
+  .primary-heading--sub {
     @apply font-heading;
     color: var(--aw-color-text-heading);
-    /* Weight is driven through `font-variation-settings` below, NOT this
-       property: once `font-variation-settings` is set, browsers stop
-       mapping `font-weight` onto the `wght` axis of the variable font.
-       Kept here only for the fallback serif stack and a11y tooling. */
-    font-weight: 300;
-    /* Every knob the self-hosted `full` build exposes, in one place:
-         opsz 9–144  — the legibility lever, NOT weight: 144 makes hairlines
-                       wispy at light weight; 52 keeps a display thick/thin
-                       contrast while the thins stay solid
-         wght 100–900 — must be set here or `font-weight` is a no-op (above)
-         SOFT 0–100  — 0 = crisp terminals (raise for a softer, rounder feel)
-         WONK 0|1    — 0 = the calm glyph set (1 swaps in the quirky forms) */
+    font-weight: 400;
     font-optical-sizing: auto;
-    font-variation-settings: 'opsz' 52, 'wght' 300, 'SOFT' 0, 'WONK' 0;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.018em;
     line-height: 1;
     text-wrap: balance;
-    /* Single source of truth for the gap below every H1/H2. `em` keeps it
-       proportional — a hero H1 gets more space beneath it than a section
-       H2, with no per-usage `mb-*`. */
+    /* One proportional gap below every heading — no per-usage `mb-*`. */
     margin-bottom: 0.4em;
   }
 
-  /* Hero H1: larger, so tracking and leading pull in further. */
-  .primary-heading--hero {
-    letter-spacing: -0.035em;
-    line-height: 0.92;
+  /* §01: emphasis words in a heading are set in the italic optical cut and
+     take the accent colour (weight unchanged). */
+  .primary-heading :is(em, i),
+  .primary-heading--hero :is(em, i),
+  .primary-heading--sub :is(em, i) {
+    color: var(--aw-color-accent);
+    font-style: italic;
+    font-weight: inherit;
   }
 
-  /* Sub-heading (h3-level): smaller than a section H2, so weight comes up
-     and the optical size drops for a sturdier letterform; tracking eases
-     and leading opens a touch for two-line titles. */
-  .primary-heading--sub {
-    font-variation-settings: 'opsz' 40, 'wght' 380, 'SOFT' 0, 'WONK' 0;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-
-  /* Zero the following element's default top margin (UA styles, prose,
-     `.dd`) so the gap is exactly the `margin-bottom` above. A `mt-*`
-     utility on that element still wins where a specific spot needs more. */
+  /* Zero the following element's default top margin so the gap is exactly
+     the `margin-bottom` above. A `mt-*` utility still wins where needed. */
   .primary-heading + * {
     margin-top: 0;
   }
 
   @media (max-width: 639px) {
-    .primary-heading {
-      letter-spacing: -0.018em;
-      line-height: 1.06;
-    }
-
-    .primary-heading--hero {
-      letter-spacing: -0.028em;
-      line-height: 0.98;
+    .primary-heading,
+    .primary-heading--hero,
+    .primary-heading--sub {
+      letter-spacing: -0.012em;
+      line-height: 1.04;
     }
   }
 
+  /* §05 eyebrow label: a short currentColor rule + uppercase mono text in
+     the accent colour, tagging every section before its heading. */
+  .eyebrow {
+    @apply inline-flex items-center gap-[0.65rem] font-ui font-medium uppercase;
+    font-size: 0.71875rem; /* 11.5px */
+    letter-spacing: 0.18em;
+    color: var(--aw-color-accent);
+  }
+  .eyebrow::before {
+    content: '';
+    width: 27px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  /* §05 buttons — near-square (2px), mono uppercase label at 11.5px / .13em,
+     min-height 3.35rem, generous side padding, 1px lift on hover. Base is
+     the "Outline" style: transparent, hover fills ink. */
   .btn {
-    @apply inline-flex items-center justify-center rounded-md border-primary border bg-transparent font-ui font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-primary focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-secondary dark:text-slate-300 dark:border-primary dark:hover:bg-slate-800 dark:hover:border-secondary cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2 border border-primary bg-transparent font-ui font-medium uppercase text-page transition-all duration-200 ease-out cursor-pointer;
+    border-radius: 2px;
+    min-height: 3.35rem;
+    padding-inline: 1.7rem;
+    /* Doc §05 puts button labels at 11.5px; bumped to 14px so short labels
+       ("WHY?") stay easily readable. Tracking eased to match. */
+    font-size: 0.875rem; /* 14px */
+    letter-spacing: 0.1em;
+    line-height: 1;
+  }
+  .btn:hover {
+    background-color: var(--aw-color-ink);
+    border-color: var(--aw-color-ink);
+    color: var(--aw-color-paper);
+    transform: translateY(-1px);
+  }
+  .btn:focus-visible {
+    outline: 2px solid var(--aw-color-accent);
+    outline-offset: 4px;
   }
 
+  /* "Accent" style: solid terracotta, hover → terracotta-deep. */
   .btn-primary {
-    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
+    @apply btn text-white;
+    background-color: var(--aw-color-primary);
+    border-color: var(--aw-color-primary);
+  }
+  .btn-primary:hover {
+    background-color: var(--aw-color-secondary);
+    border-color: var(--aw-color-secondary);
+    color: #fff;
+    box-shadow: var(--aw-shadow-soft, 0 32px 80px -54px rgb(23 18 13 / 0.48));
   }
 
   .btn-secondary {
@@ -121,7 +156,13 @@
   }
 
   .btn-tertiary {
-    @apply btn border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
+    @apply btn border-none;
+    color: var(--aw-color-text-muted);
+  }
+  .btn-tertiary:hover {
+    background-color: transparent;
+    color: var(--aw-color-text-heading);
+    transform: translateY(-1px);
   }
 }
 

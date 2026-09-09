@@ -13,6 +13,19 @@ export default {
         accent: 'var(--aw-color-accent)',
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',
+        // Design-system palette (§02) — warm paper / near-black ink / one accent.
+        paper: 'var(--aw-color-paper)',
+        'paper-2': 'var(--aw-color-paper-2)',
+        'paper-3': 'var(--aw-color-paper-3)',
+        ink: 'var(--aw-color-ink)',
+        'ink-deep': 'var(--aw-color-ink-deep)',
+        'ink-soft': 'var(--aw-color-ink-soft)',
+        clay: 'var(--aw-color-clay)',
+        olive: 'var(--aw-color-olive)',
+        terracotta: 'var(--aw-color-terracotta)',
+        'terracotta-deep': 'var(--aw-color-terracotta-deep)',
+        line: 'var(--aw-line)',
+        'line-strong': 'var(--aw-line-strong)',
         // Components across the template hardcode `dark:*-slate-*` as their
         // dark-mode neutral (text, borders, card backgrounds). Rather than
         // patch every occurrence, alias the slate scale itself to Tailwind's
@@ -30,17 +43,15 @@ export default {
         ui: ['var(--aw-font-ui, ui-monospace)', ...defaultTheme.fontFamily.mono],
       },
 
-      // Newsreader runs optically small, so the whole type scale is bumped
-      // up a step from Tailwind's defaults for a larger editorial reading
-      // size. Values are [font-size, line-height]. Headings (text-3xl+) are
-      // left near their defaults so the hierarchy stays intact.
+      // Design system §04: body 18px / 1.66. Small UI text (mono labels,
+      // nav, buttons, folios) clusters at 11–13px with wide tracking.
       fontSize: {
-        xs: ['0.8125rem', { lineHeight: '1.5' }], // 13px
-        sm: ['0.9375rem', { lineHeight: '1.6' }], // 15px
-        base: ['1.1875rem', { lineHeight: '1.66' }], // 19px — matches the body rule
-        lg: ['1.375rem', { lineHeight: '1.66' }], // 22px
-        xl: ['1.625rem', { lineHeight: '1.6' }], // 26px — hero subtitle, lead body
-        '2xl': ['2rem', { lineHeight: '1.5' }], // 32px
+        xs: ['0.71875rem', { lineHeight: '1.4' }], // 11.5px — eyebrow / label / folio
+        sm: ['0.8125rem', { lineHeight: '1.5' }], // 13px
+        base: ['1.1875rem', { lineHeight: '1.66' }], // 19px — body (doc says 18px; a notch up for Newsreader's small x-height)
+        lg: ['1.25rem', { lineHeight: '1.6' }], // 20px
+        xl: ['1.5rem', { lineHeight: '1.5' }], // 24px — hero subtitle / lead
+        '2xl': ['1.875rem', { lineHeight: '1.4' }], // 30px
       },
 
       animation: {
